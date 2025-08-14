@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "required": [
+        "id",
+        "nome",
+        "visivel",
+        "usuario_id"
+    ],
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "nome": {
+            "type": "string"
+        },
+        "visivel": {
+            "type": "boolean"
+        },
+        "usuario_id": {
+            "type": "integer"
+        }
+    },
+    "additionalProperties": false
+}

@@ -1,0 +1,61 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "required": [
+        "id",
+        "descricao",
+        "envolvido",
+        "observacao",
+        "tipo",
+        "data_transacao",
+        "data_pagamento",
+        "valor",
+        "status",
+        "conta_id",
+        "usuario_id",
+        "transferencia_id",
+        "parcelamento_id"
+    ],
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "descricao": {
+            "type": "string"
+        },
+        "envolvido": {
+            "type": "string"
+        },
+        "observacao": {
+            "type": "null"
+        },
+        "tipo": {
+            "type": "string"
+        },
+        "data_transacao": {
+            "type": "string"
+        },
+        "data_pagamento": {
+            "type": "string"
+        },
+        "valor": {
+            "type": "string"
+        },
+        "status": {
+            "type": "boolean"
+        },
+        "conta_id": {
+            "type": "integer"
+        },
+        "usuario_id": {
+            "type": "integer"
+        },
+        "transferencia_id": {
+            "type": "null"
+        },
+        "parcelamento_id": {
+            "type": "null"
+        }
+    },
+    "additionalProperties": false
+}

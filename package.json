@@ -1,0 +1,61 @@
+{
+  "name": "cypress_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:open-pre": "cypress open --env fileConfig=pre",
+    "cy:run": "cypress run --browser chrome",
+    "cy:run-exemplo": "cypress run --spec 'cypress/e2e/spec/exemplo/' --browser chrome",
+    "cy:run-exemplo-regressao":"cypress run --spec 'cypress/e2e/spec/exemplo/' --browser chrome --env grep=regressão",
+    "cypress:verify": "cypress verify",
+    "update-packages": "npx npm-check-updates"
+  },
+  "keywords": [],
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "step_definitions": "./cypress/e2e/step_definitions",
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/reports/json"
+    }
+  },
+  "author": "Caio Andrian",
+  "license": "ISC",
+  "devDependencies": {
+    "ajv": "^8.12.0",
+    "@babel/core": "^7.25.7",
+    "@babel/eslint-parser": "^7.25.7",
+    "@babel/preset-env": "^7.25.7",
+    "@cypress/grep": "^4.1.0",
+    "axe-core": "^4.10.2",
+    "cy-verify-downloads": "^0.2.5",
+    "cypress-axe": "^1.6.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-delete-downloads-folder": "^0.0.6",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-xpath": "^2.0.1",
+    "eslint": "^9.15.0",
+    "eslint-plugin-cucumber": "^2.0.0",
+    "eslint-plugin-cypress": "^3.5.0",
+    "faker-br": "^0.4.1",
+    "fs-extra": "^11.2.0"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cypress": "^14.4.1",
+    "cypress-iframe": "^1.0.1",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-multi-reporters": "^1.6.4",
+    "cypress-plugin-api": "^2.11.2",
+    "junit-report-merger": "^7.0.0",
+    "mocha": "^10.8.2",
+    "mocha-junit-reporter": "^2.2.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0",
+    "multiple-cucumber-html-reporter": "^3.9.2",
+    "rimraf": "^6.0.1"
+  }
+}
