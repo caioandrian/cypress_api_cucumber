@@ -13,9 +13,8 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '16.x'  # Atualizado para versão mais recente
   displayName: 'Install Node.js'
-
 
 - script: |
     cd TemplateAutomation && npm ci
@@ -32,7 +31,7 @@ steps:
     testResultsFiles: '**/test-*.xml'
   condition: succeededOrFailed()
   continueOnError: true
-  
+
 - task: CopyFiles@2
   inputs:
     SourceFolder: 'TemplateAutomation/cypress/reports'

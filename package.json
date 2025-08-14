@@ -1,7 +1,7 @@
 {
   "name": "cypress_api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projeto de automação de testes API usando Cypress e Cucumber.",
   "main": "index.js",
   "scripts": {
     "cy:open": "cypress open",
@@ -12,7 +12,7 @@
     "cypress:verify": "cypress verify",
     "update-packages": "npx npm-check-updates"
   },
-  "keywords": [],
+  "keywords": ["cypress", "cucumber", "automação", "testes", "API"],
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
     "step_definitions": "./cypress/e2e/step_definitions",
