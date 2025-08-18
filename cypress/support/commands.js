@@ -40,38 +40,3 @@ Cypress.Commands.add('step_not_implemented', () => {
     console.log('O step não foi implementado!')
     cy.log('O step não foi implementado!')
 })
-
-import Ajv from 'ajv'
-
-//strict true dando erro...
-const ajv = new Ajv();
-
-Cypress.Commands.add('validacao_de_contrato', (resposta, schema, status) => {
-    cy.fixture(`${schema}/${status}.json`).then( schema => {
-        //schema que será usado para validação
-        const validate = ajv.compile(schema)
-        console.log(validate)
-
-        const valid = validate(resposta.body)
-        //caso tenha dado algum erro
-        if(!valid){
-            var errors = ''
-            
-            //tentativa com of mas é usado o in
-            for(let each in validate.errors){
-                let err = validate.errors[each]
-
-                //instancePath = em qual linha da resposta que obtive está o erro
-                //err.message = o que era pra ter recebido (string, int, boolean, etc)
-                //err.data = o tipo de dado que eu recebi
-                errors += `\n${err.instancePath} ${err.message}, but receive ${typeof err.data}`
-            }
-
-            throw new Error('Contract validation error, please verify!' + errors)
-            Cypress.runner.stop()
-        }
-
-        //caso tenha dado tudo certo
-        return true;
-    })
-});

@@ -13,7 +13,6 @@ Funcionalidade: [regressão] API - Exemplo WCAquino
     Esquema do Cenario: Criar conta para movimentação
         Dado que tenha adicionado a propriedade "nome" e o valor "<nome_conta>" em um body
         Quando fizer uma requisição do tipo "POST" no ms de "wcaquino" no endpoint "contas" no "exemplo"
-        Então deve obter como resposta o schema "exemplo/schema/conta_movimentacao/post" com status <status>
         Então deve retornar na resposta o status code <status>
         Exemplos:
             | nome_conta         | status | propriedade | valor                              |

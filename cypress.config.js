@@ -35,14 +35,11 @@ module.exports = defineConfig({
   retries: 0,
   e2e: {
     env: {
-      grepOmitFiltered: true,
-      grepFilterSpecs: true,
       snapshotOnly: true
     },
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
     setupNodeEvents(on, config) {
-      require('@cypress/grep/src/plugin')(config);
       return require('./cypress/plugins/index.js')(on, config)
     },
     excludeSpecPattern: '*.js',

@@ -21,9 +21,6 @@ import 'cypress-plugin-api'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-const registerCypressGrep = require('@cypress/grep')
-registerCypressGrep()
-
 Cypress.SelectorPlayground.defaults({
     selectorPriority: ['data-cy', 'data-test', 'data-testid', 'id', 'data-wc', 'class', 'attributes', 
         ,'tag', 'nth-child']
