@@ -1,42 +1,43 @@
 // ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
+// Custom commands for API testing
 // ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-Cypress.Commands.overwrite('request', (originalFn, ...options) => {
-    if(options.length === 1){
-        if(Cypress.env('token')){
-            options[0].headers = {
-                Authorization: `JWT ${Cypress.env('token')}`
-            }
-        }
-    }
+Cypress.Commands.add('getToken', () => {
+  cy.request({
+    method: 'POST',
+    url: 'https://barrigarest.wcaquino.me/signin',
+    body: {
+      email: 'caio@caio',
+      senha: '123'
+    },
+    failOnStatusCode: false
+  }).then(response => {
+    expect(response.status).to.eq(200);
+    expect(response.body.token).to.not.be.empty;
+    Cypress.env('token', response.body.token);
+  });
+});
 
-    return originalFn(...options)
-})
+Cypress.Commands.add('resetRest', () => {
+  cy.request({
+    method: 'GET',
+    url: 'https://barrigarest.wcaquino.me/reset',
+    headers: {
+      Authorization: `JWT ${Cypress.env('token')}`
+    },
+    failOnStatusCode: false
+  });
+});
 
-Cypress.Commands.add('step_not_implemented', () => { 
-    console.log('O step não foi implementado!')
-    cy.log('O step não foi implementado!')
-})
+Cypress.Commands.add('apiRequest', (method, endpoint, options = {}) => {
+  const defaults = {
+    method,
+    url: `https://barrigarest.wcaquino.me/${endpoint}`,
+    headers: {
+      Authorization: `JWT ${Cypress.env('token')}`
+    },
+    failOnStatusCode: false
+  };
+
+  return cy.request({ ...defaults, ...options });
+});
